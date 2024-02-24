@@ -17,10 +17,8 @@ def main [spans: list] {
 }
 
 # Run a laravel artisan command.
-export def artisan [ ...command: string] {
-  let dir = $env.PWD | find-laravel-dir;
-
-  cd $dir;
+export def --wrapped artisan [ ...command: string] {
+  cd ($env.PWD | find-laravel-dir);
 
   ^php artisan ...$command
 }
