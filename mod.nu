@@ -23,8 +23,9 @@ export def --wrapped artisan [ ...command: string] {
   ^php artisan ...$command
 }
 
+# Generates completions for the "artisan" command.
 export def artisan-completer [
-  prev: closure
+  prev: closure # the previous completer to fall back to for all non-artisan commands.
 ]: nothing -> closure {
   {|spans|
     if ($spans.0 == 'artisan' or $spans.0 == 'php' and $spans.1 == 'artisan') {
